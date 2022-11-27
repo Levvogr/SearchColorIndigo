@@ -8,12 +8,11 @@ import java.net.URL;
 
 public class ImageDownloader {
     public static void downloadImage(String fileName, String strImageURL) throws IOException {
-        String imageName=strImageURL.substring(strImageURL.lastIndexOf("/")+1);
         URL urlImage = new URL(strImageURL);
         InputStream in = urlImage.openStream();
         byte[] buffer = new byte[4096];
         int n = -1;
-        OutputStream os = new FileOutputStream( fileName + "/" + imageName );
+        OutputStream os = new FileOutputStream(fileName);
         while ( (n = in.read(buffer)) != -1 )
             os.write(buffer, 0, n);
         os.close();
